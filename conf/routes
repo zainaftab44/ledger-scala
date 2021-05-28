@@ -1,0 +1,3 @@
+GET        /add/:from                 controllers.TransactionController.add(from:String,amount:Option[Int])
+GET        /balance/:from             controllers.TransactionController.balance(from:String)
+GET        /transfer/:from/:to        controllers.TransactionController.transfer(from:String,to:String,amount:Option[Int])

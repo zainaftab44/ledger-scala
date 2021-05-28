@@ -1,0 +1,6 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/zain/Downloads/play-samples-play-scala-rest-api-example/conf/application.conf,/home/zain/Downloads/play-samples-play-scala-rest-api-example/target/scala-2.13/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/zain/Downloads/play-samples-play-scala-rest-api-example/conf/logback.xml,/home/zain/Downloads/play-samples-play-scala-rest-api-example/target/scala-2.13/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/zain/Downloads/play-samples-play-scala-rest-api-example/conf/secure.conf,/home/zain/Downloads/play-samples-play-scala-rest-api-example/target/scala-2.13/classes/secure.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/zain/Downloads/play-samples-play-scala-rest-api-example/conf/generated.keystore,/home/zain/Downloads/play-samples-play-scala-rest-api-example/target/scala-2.13/classes/generated.keystore)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/zain/Downloads/play-samples-play-scala-rest-api-example/conf/routes,/home/zain/Downloads/play-samples-play-scala-rest-api-example/target/scala-2.13/classes/routes)[0m
