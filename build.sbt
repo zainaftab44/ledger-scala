@@ -7,11 +7,11 @@ lazy val root = (project in file("."))
     name := "ledger",
     scalaVersion := "2.13.6",
     libraryDependencies ++= Seq(
-      guice,
+      jdbc,
+      "org.playframework.anorm" %% "anorm" % "2.6.10",
       "org.joda" % "joda-convert" % "2.2.1",
       "net.logstash.logback" % "logstash-logback-encoder" % "6.2",
       "io.lemonlabs" %% "scala-uri" % "1.5.1",
-      "net.codingwell" %% "scala-guice" % "4.2.6",
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
     ),
     scalacOptions ++= Seq(

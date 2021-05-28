@@ -34,9 +34,9 @@ class Routes(
   }
 
   def documentation = List(
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """add/""" + "$" + """from<[^/]+>""", """controllers.TransactionController.add(from:String, amount:Option[Int])"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """balance/""" + "$" + """from<[^/]+>""", """controllers.TransactionController.balance(from:String)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transfer/""" + "$" + """from<[^/]+>/""" + "$" + """to<[^/]+>""", """controllers.TransactionController.transfer(from:String, to:String, amount:Option[Int])"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """add/""" + "$" + """from<[A-Za-z0-9]+>""", """controllers.TransactionController.add(from:String, amount:Option[Int])"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """balance/""" + "$" + """from<[A-Za-z0-9]+>""", """controllers.TransactionController.balance(from:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """transfer/""" + "$" + """from<[A-Za-z0-9]+>/""" + "$" + """to<[A-Za-z0-9]+>""", """controllers.TransactionController.transfer(from:String, to:String, amount:Option[Int])"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -46,7 +46,7 @@ class Routes(
 
   // @LINE:1
   private[this] lazy val controllers_TransactionController_add0_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("add/"), DynamicPart("from", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("add/"), DynamicPart("from", """[A-Za-z0-9]+""",false)))
   )
   private[this] lazy val controllers_TransactionController_add0_invoker = createInvoker(
     TransactionController_0.add(fakeValue[String], fakeValue[Option[Int]]),
@@ -56,7 +56,7 @@ class Routes(
       "add",
       Seq(classOf[String], classOf[Option[Int]]),
       "GET",
-      this.prefix + """add/""" + "$" + """from<[^/]+>""",
+      this.prefix + """add/""" + "$" + """from<[A-Za-z0-9]+>""",
       """""",
       Seq()
     )
@@ -64,7 +64,7 @@ class Routes(
 
   // @LINE:2
   private[this] lazy val controllers_TransactionController_balance1_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("balance/"), DynamicPart("from", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("balance/"), DynamicPart("from", """[A-Za-z0-9]+""",false)))
   )
   private[this] lazy val controllers_TransactionController_balance1_invoker = createInvoker(
     TransactionController_0.balance(fakeValue[String]),
@@ -74,7 +74,7 @@ class Routes(
       "balance",
       Seq(classOf[String]),
       "GET",
-      this.prefix + """balance/""" + "$" + """from<[^/]+>""",
+      this.prefix + """balance/""" + "$" + """from<[A-Za-z0-9]+>""",
       """""",
       Seq()
     )
@@ -82,7 +82,7 @@ class Routes(
 
   // @LINE:3
   private[this] lazy val controllers_TransactionController_transfer2_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("transfer/"), DynamicPart("from", """[^/]+""",true), StaticPart("/"), DynamicPart("to", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("transfer/"), DynamicPart("from", """[A-Za-z0-9]+""",false), StaticPart("/"), DynamicPart("to", """[A-Za-z0-9]+""",false)))
   )
   private[this] lazy val controllers_TransactionController_transfer2_invoker = createInvoker(
     TransactionController_0.transfer(fakeValue[String], fakeValue[String], fakeValue[Option[Int]]),
@@ -92,7 +92,7 @@ class Routes(
       "transfer",
       Seq(classOf[String], classOf[String], classOf[Option[Int]]),
       "GET",
-      this.prefix + """transfer/""" + "$" + """from<[^/]+>/""" + "$" + """to<[^/]+>""",
+      this.prefix + """transfer/""" + "$" + """from<[A-Za-z0-9]+>/""" + "$" + """to<[A-Za-z0-9]+>""",
       """""",
       Seq()
     )
