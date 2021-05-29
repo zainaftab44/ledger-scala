@@ -1,0 +1,24 @@
+version: '3'
+
+
+services:
+
+  mysql:
+    container_name: mysql_db
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: ledger
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+
+  web:
+    build: .
+    ports:
+      - 9000:9000
+    volumes:
+      - .:/ledger
+    links:
+      - mysql
