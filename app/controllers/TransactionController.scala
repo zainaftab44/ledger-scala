@@ -1,17 +1,19 @@
 package controllers
 
-import play.api.mvc.{AbstractController, ControllerComponents, Result}
-import play.api.mvc.Results.Ok
-import play.mvc.Controller
-
+import play.api.db._
+import play.api.mvc.{AbstractController, ControllerComponents}
+import play.api.db.Database
 import javax.inject.Inject
-import anorm._
+import scala.concurrent.Future
 
-class TransactionController (cc: ControllerComponents) extends AbstractController(cc) {
+class TransactionController @Inject() (db: Database,cc: ControllerComponents) extends AbstractController(cc) {
 
   def balance(id: String) = Action {
     request => {
-      Ok(id + " has balance [" + database + "]")
+      val conn = db.getConnection()
+      val stmt = conn.createStatement()
+
+      Ok(id + " has balance [" + db.dataSource + "] ==== ")
     }
   }
 

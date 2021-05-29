@@ -1,5 +1,5 @@
 import sbt.Keys._
-import play.sbt.PlaySettings
+import play.sbt._
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayService, PlayLayoutPlugin, Common)
@@ -8,6 +8,7 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.6",
     libraryDependencies ++= Seq(
       jdbc,
+      guice,
       "org.playframework.anorm" %% "anorm" % "2.6.10",
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
       "mysql" % "mysql-connector-java" % "5.1.41"
