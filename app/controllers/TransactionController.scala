@@ -7,12 +7,11 @@ import play.mvc.Controller
 import javax.inject.Inject
 import anorm._
 
-
-class TransactionController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class TransactionController (cc: ControllerComponents) extends AbstractController(cc) {
 
   def balance(id: String) = Action {
     request => {
-      Ok(id + " has balance [" + 1234 + "]")
+      Ok(id + " has balance [" + database + "]")
     }
   }
 
