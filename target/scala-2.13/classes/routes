@@ -1,3 +1,3 @@
 POST        /add/$from<[A-Za-z0-9]+>                               controllers.TransactionController.add(from:String,amount:Option[Long])
-GET        /balance/$from<[A-Za-z0-9]+>                           controllers.TransactionController.balance(from:String)
+GET         /balance/$from<[A-Za-z0-9]+>                           controllers.TransactionController.balance(from:String)
 POST        /transfer/$from<[A-Za-z0-9]+>/$to<[A-Za-z0-9]+>        controllers.TransactionController.transfer(from:String,to:String,amount:Option[Long])

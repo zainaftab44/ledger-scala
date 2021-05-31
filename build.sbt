@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       jdbc,
       guice,
+      ws,
       evolutions,
       "org.joda" % "joda-convert" % "2.2.1",
       "org.playframework.anorm" %% "anorm" % "2.6.10",

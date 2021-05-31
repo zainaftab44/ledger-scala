@@ -14,7 +14,7 @@ class TransactionController @Inject()(database: Database, ec: DatabaseExecutionC
 
   def balance(id: String) = Action {
     if (!checkUserExists(id))
-      Ok(Json.obj("message" -> "User does not exist"))
+      NotFound(Json.obj("message" -> "User does not exist"))
     else
       Ok(Json.obj("message" -> s"$id has balance ${getBalance(id)}"))
   }
