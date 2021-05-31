@@ -20,12 +20,16 @@ class TransactionController @Inject()(database: Database, ec: DatabaseExecutionC
   }
 
   def transfer(from: String, to: String, amount: Option[Long]) = Action {
-    if (!checkUserExists(from))
-      Ok(Json.obj("message" -> "Sender does not exist"))
+    if (from.equals(to))
+      NotAcceptable(Json.obj("message" -> "Cannot perform transfer: Sender and Receiver cannot be same"))
+    else if (!checkUserExists(from))
+      NotFound(Json.obj("message" -> "Cannot perform transfer: Sender does not exist"))
     else if (!checkUserExists(to))
-      Ok(Json.obj("message" -> "Receiver does not exist"))
-    else if (amount.get < 0 || amount.get > getBalance(from))
-      Ok(Json.obj("message" -> "Cannot perform transfer: Invalid transfer amount"))
+      NotFound(Json.obj("message" -> "Cannot perform transfer: Receiver does not exist"))
+    else if (amount.get <= 0)
+      NotAcceptable(Json.obj("message" -> "Cannot perform transfer: Invalid transfer amount must be more than zero"))
+    else if (amount.get > getBalance(from))
+      NotAcceptable(Json.obj("message" -> "Cannot perform transfer: Insufficient balance"))
     else
       database.withConnection {
         implicit connection => {
@@ -43,9 +47,9 @@ class TransactionController @Inject()(database: Database, ec: DatabaseExecutionC
 
   def add(id: String, amount: Option[Long]) = Action {
     if (!checkUserExists(id))
-      Ok(Json.obj("message" -> "User does not exist"))
-    else if (amount.get < 0)
-      Ok(Json.obj("message" -> "Deposit amount cannot be less than 0"))
+      NotFound(Json.obj("message" -> "User does not exist"))
+    else if (amount.get <= 0)
+      NotAcceptable(Json.obj("message" -> "Deposit amount must be greater than zero"))
     else
       database.withConnection {
         implicit connection => {
